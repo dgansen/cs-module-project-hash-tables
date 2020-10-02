@@ -1,9 +1,13 @@
-# Your code here
-
+mem = {(0,0,0):0}
 
 def expensive_seq(x, y, z):
-    # Your code here
+    if (x,y,z) not in mem:
+        mem[(x,y,z)] = expensive_seq(x-1, y+1, z) + \
+                       expensive_seq(x-2, y+2, z^2) + \
+                       expensive_seq(x-3, y+3, z^3) if x > 0 else y+z
+    return mem[(x,y,z)]
 
+    
 
 
 if __name__ == "__main__":
